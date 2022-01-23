@@ -1,8 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sparrow_news_app/utils/app_strings.dart';
 import 'package:sparrow_news_app/utils/custom_router.dart';
 import 'package:sparrow_news_app/utils/routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -12,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Sparrow News',
+        title: AppStrings.appName,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
