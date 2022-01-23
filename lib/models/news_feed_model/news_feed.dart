@@ -10,7 +10,7 @@ class NewsFeed with _$NewsFeed {
     required int comments,
     required String headline,
     required String summary,
-    required String? image,
+    required String image,
   }) = _NewsFeed;
 
   factory NewsFeed.fromJson(Map<String, dynamic> json) =>

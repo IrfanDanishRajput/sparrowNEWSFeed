@@ -18,3 +18,15 @@ class NewsFeedFailureState extends NewsFeedState {
 
   NewsFeedFailureState({required this.message});
 }
+
+class NewsFeedLoadDetailState extends NewsFeedState {
+  final NewsFeed newsFeed;
+
+  NewsFeedLoadDetailState({required this.newsFeed});
+}
+
+class NewsFeedCommentsLoadedState extends NewsFeedState {
+  final Stream<List<Comment>> comments;
+
+  NewsFeedCommentsLoadedState({required this.comments});
+}

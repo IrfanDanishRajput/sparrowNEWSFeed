@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sparrow_news_app/blocs/news_feed_bloc/news_feed_bloc.dart';
 import 'package:sparrow_news_app/utils/app_strings.dart';
 import 'package:sparrow_news_app/utils/custom_router.dart';
 import 'package:sparrow_news_app/utils/routes.dart';
@@ -25,14 +27,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: AppStrings.appName,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: AppRoutes.loginRoute,
-      onGenerateRoute: CustomRouter.allRoutes,
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => NewsFeedBloc()),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: AppStrings.appName,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          initialRoute: AppRoutes.loginRoute,
+          onGenerateRoute: CustomRouter.allRoutes,
+        ));
   }
 }

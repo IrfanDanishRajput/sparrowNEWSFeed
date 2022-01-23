@@ -11,7 +11,7 @@ _$_NewsFeed _$$_NewsFeedFromJson(Map<String, dynamic> json) => _$_NewsFeed(
       comments: json['comments'] as int,
       headline: json['headline'] as String,
       summary: json['summary'] as String,
-      image: json['image'] as String?,
+      image: json['image'] as String,
     );
 
 Map<String, dynamic> _$$_NewsFeedToJson(_$_NewsFeed instance) =>

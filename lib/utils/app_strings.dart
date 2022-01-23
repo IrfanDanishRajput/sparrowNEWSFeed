@@ -3,6 +3,12 @@ class AppStrings {
   static const signInAnonymously = 'Sign in Anonymously';
   static const oops = 'Oops';
   static const okay = 'Okay';
+  static const newsFeed = 'NEWS Feed';
+  static const newsDetails = 'NEWS Details';
+  static const newsFeedHeadline = 'Headline: ';
+  static const newsFeedSummary = 'Summary: ';
+  static const comments = 'Comments on NEWS Feed: ';
+  static const numberOfCommentsOnNEWSFeed = 'Number of comments: ';
 
   //Failure strings
   static const unknownErrorOccurred =

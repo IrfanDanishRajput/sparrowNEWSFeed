@@ -27,7 +27,7 @@ class _$NewsFeedTearOff {
       required int comments,
       required String headline,
       required String summary,
-      required String? image}) {
+      required String image}) {
     return _NewsFeed(
       documentID: documentID,
       comments: comments,
@@ -51,7 +51,7 @@ mixin _$NewsFeed {
   int get comments => throw _privateConstructorUsedError;
   String get headline => throw _privateConstructorUsedError;
   String get summary => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,7 +68,7 @@ abstract class $NewsFeedCopyWith<$Res> {
       int comments,
       String headline,
       String summary,
-      String? image});
+      String image});
 }
 
 /// @nodoc
@@ -107,7 +107,7 @@ class _$NewsFeedCopyWithImpl<$Res> implements $NewsFeedCopyWith<$Res> {
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -122,7 +122,7 @@ abstract class _$NewsFeedCopyWith<$Res> implements $NewsFeedCopyWith<$Res> {
       int comments,
       String headline,
       String summary,
-      String? image});
+      String image});
 }
 
 /// @nodoc
@@ -162,7 +162,7 @@ class __$NewsFeedCopyWithImpl<$Res> extends _$NewsFeedCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -189,7 +189,7 @@ class _$_NewsFeed implements _NewsFeed {
   @override
   final String summary;
   @override
-  final String? image;
+  final String image;
 
   @override
   String toString() {
@@ -235,7 +235,7 @@ abstract class _NewsFeed implements NewsFeed {
       required int comments,
       required String headline,
       required String summary,
-      required String? image}) = _$_NewsFeed;
+      required String image}) = _$_NewsFeed;
 
   factory _NewsFeed.fromJson(Map<String, dynamic> json) = _$_NewsFeed.fromJson;
 
@@ -248,7 +248,7 @@ abstract class _NewsFeed implements NewsFeed {
   @override
   String get summary;
   @override
-  String? get image;
+  String get image;
   @override
   @JsonKey(ignore: true)
   _$NewsFeedCopyWith<_NewsFeed> get copyWith =>

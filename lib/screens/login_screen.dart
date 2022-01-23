@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
 
   void _listener(BuildContext context, LoginState state) {
     if (state is LoginSuccessfulState) {
-      Navigator.pushNamed(context, AppRoutes.newsFeedRoute);
+      Navigator.popAndPushNamed(context, AppRoutes.newsFeedRoute);
     } else if (state is LoginFailureState) {
       showAlert(context, state.message);
     }
