@@ -7,7 +7,7 @@ part 'news_feed.g.dart';
 class NewsFeed with _$NewsFeed {
   factory NewsFeed({
     required String documentID,
-    required int comment,
+    required int comments,
     required String headline,
     required String summary,
     required String? image,

@@ -8,7 +8,7 @@ part of 'news_feed.dart';
 
 _$_NewsFeed _$$_NewsFeedFromJson(Map<String, dynamic> json) => _$_NewsFeed(
       documentID: json['documentID'] as String,
-      comment: json['comment'] as int,
+      comments: json['comments'] as int,
       headline: json['headline'] as String,
       summary: json['summary'] as String,
       image: json['image'] as String?,
@@ -17,7 +17,7 @@ _$_NewsFeed _$$_NewsFeedFromJson(Map<String, dynamic> json) => _$_NewsFeed(
 Map<String, dynamic> _$$_NewsFeedToJson(_$_NewsFeed instance) =>
     <String, dynamic>{
       'documentID': instance.documentID,
-      'comment': instance.comment,
+      'comments': instance.comments,
       'headline': instance.headline,
       'summary': instance.summary,
       'image': instance.image,
