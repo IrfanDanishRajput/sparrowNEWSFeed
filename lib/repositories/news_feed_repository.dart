@@ -44,4 +44,35 @@ class NewsFeedRepository {
       rethrow;
     }
   }
+
+  Future<bool> addAComment(String comment, String newFeedID) async {
+    try {
+      final documentReference =
+          _firestore.collection(FirebaseStrings.collectionComments).doc();
+      final data = {
+        FirebaseStrings.comment: comment,
+        FirebaseStrings.newsFeedID: newFeedID
+      };
+      await documentReference.set(data);
+      await updateCommentCount(newFeedID);
+      return true;
+    } catch (e) {
+      if (kDebugMode) {
+        print('NewsFeedRepository | addAComment:  $e');
+      }
+      rethrow;
+    }
+  }
+
+  Future<void> updateCommentCount(String newsFeedID) async {
+    final documentReference = _firestore
+        .collection(FirebaseStrings.collectionNewsFeed)
+        .doc(newsFeedID);
+    final document = await documentReference.get();
+    final documentData = document.data();
+    int commentCount = documentData![FirebaseStrings.comments] as int;
+    commentCount++;
+    await documentReference
+        .set({FirebaseStrings.comments: commentCount}, SetOptions(merge: true));
+  }
 }

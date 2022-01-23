@@ -28,5 +28,12 @@ class NewsFeedBloc extends Bloc<NewsFeedEvent, NewsFeedState> {
           _repository.getNewsFeedComments(newsFeedID: event.newsFeedID);
       emit(NewsFeedCommentsLoadedState(comments: stream));
     });
+    on<NewsFeedCommentAddedEvent>((event, emit) async {
+      final isCommentAdded =
+          await _repository.addAComment(event.comment, event.newsFeedID);
+      if (isCommentAdded) {
+        emit(NewsFeedCommentAddedState());
+      }
+    });
   }
 }

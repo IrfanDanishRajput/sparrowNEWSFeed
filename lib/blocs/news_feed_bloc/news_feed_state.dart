@@ -30,3 +30,5 @@ class NewsFeedCommentsLoadedState extends NewsFeedState {
 
   NewsFeedCommentsLoadedState({required this.comments});
 }
+
+class NewsFeedCommentAddedState extends NewsFeedState {}

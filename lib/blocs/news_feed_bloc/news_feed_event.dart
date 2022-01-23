@@ -16,3 +16,9 @@ class NewsFeedLoadCommentsEvent extends NewsFeedEvent {
 
   NewsFeedLoadCommentsEvent({required this.newsFeedID});
 }
+
+class NewsFeedCommentAddedEvent extends NewsFeedEvent {
+  final String comment;
+  final String newsFeedID;
+  NewsFeedCommentAddedEvent({required this.comment, required this.newsFeedID});
+}

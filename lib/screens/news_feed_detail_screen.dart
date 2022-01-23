@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:sparrow_news_app/blocs/news_feed_bloc/news_feed_bloc.dart';
 import 'package:sparrow_news_app/models/comment_model/comment.dart';
 import 'package:sparrow_news_app/models/news_feed_model/news_feed.dart';
@@ -17,17 +18,23 @@ class NewsFeedDetailScreen extends StatefulWidget {
 class _NewsFeedDetailScreenState extends State<NewsFeedDetailScreen> {
   late final Stream<List<Comment>> stream;
   late final NewsFeedBloc _newsFeed;
+  late final TextEditingController _controller;
   @override
   void initState() {
     _newsFeed = BlocProvider.of<NewsFeedBloc>(context);
     _newsFeed
         .add(NewsFeedLoadCommentsEvent(newsFeedID: widget.newsFeed.documentID));
+    _controller = TextEditingController();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _buildAlert(),
+        child: const Icon(Icons.comment),
+      ),
       appBar: AppBar(
         title: const Text(AppStrings.newsDetails),
       ),
@@ -77,7 +84,7 @@ class _NewsFeedDetailScreenState extends State<NewsFeedDetailScreen> {
                 return const CircularProgressIndicator();
               },
             ),
-          )
+          ),
         ],
       ),
     );
@@ -135,5 +142,36 @@ class _NewsFeedDetailScreenState extends State<NewsFeedDetailScreen> {
                 style: const TextStyle(fontWeight: FontWeight.normal))
           ]),
     );
+  }
+
+  void _buildAlert() {
+    Alert(
+        context: context,
+        title: AppStrings.addAComment,
+        content: Column(
+          children: <Widget>[
+            TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.comment),
+                labelText: AppStrings.comment,
+              ),
+            ),
+          ],
+        ),
+        buttons: [
+          DialogButton(
+            onPressed: () {
+              _newsFeed.add(NewsFeedCommentAddedEvent(
+                  comment: _controller.value.text,
+                  newsFeedID: widget.newsFeed.documentID));
+              Navigator.pop(context);
+            },
+            child: Text(
+              AppStrings.comment.toUpperCase(),
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          )
+        ]).show();
   }
 }

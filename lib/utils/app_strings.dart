@@ -9,6 +9,8 @@ class AppStrings {
   static const newsFeedSummary = 'Summary: ';
   static const comments = 'Comments on NEWS Feed: ';
   static const numberOfCommentsOnNEWSFeed = 'Number of comments: ';
+  static const addAComment = 'Add a comment';
+  static const comment = 'Comment';
 
   //Failure strings
   static const unknownErrorOccurred =
